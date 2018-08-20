@@ -1,1 +1,2 @@
-/ssl-serts/
+# all certificates folder
+/ssl-certs
