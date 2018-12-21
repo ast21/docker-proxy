@@ -1,14 +1,15 @@
 version: "2"
 services:
-  proxy-ssl:
+  nginx-proxy:
     image: jwilder/nginx-proxy
+    container_name: nginx-proxy
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./ssl-certs:/etc/nginx/certs
-      - ./client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
+      - ./certs:/etc/nginx/certs
+      - ./conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
     restart: always
     networks:
       - front
