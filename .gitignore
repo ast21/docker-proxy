@@ -1,2 +1,4 @@
-# all certificates folder
-/certs
+# all certificates files
+*.key
+*.crt
+*.pem
