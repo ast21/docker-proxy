@@ -2,3 +2,6 @@
 *.key
 *.crt
 *.pem
+
+/.idea
+/conf.d/default.conf

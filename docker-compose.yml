@@ -9,7 +9,8 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs:/etc/nginx/certs
-      - ./conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
+      - ./conf.d:/etc/nginx/conf.d
+      - ./proxy.conf:/etc/nginx/proxy.conf
     restart: always
     networks:
       - front
