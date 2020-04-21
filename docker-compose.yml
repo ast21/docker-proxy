@@ -10,8 +10,8 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs:/etc/nginx/certs
       - ./htpasswd:/etc/nginx/htpasswd
-      - ./conf.d:/etc/nginx/conf.d
       - ./proxy.conf:/etc/nginx/proxy.conf
+      - ./client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
     restart: always
     networks:
       - front
