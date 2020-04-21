@@ -1,27 +1,42 @@
 # Get started
 
 ## create network
-```sh
-docker network create front
+```bash
+docker network create --subnet=192.168.200.0/28 front
 ```
 
 ## and start it
-```sh
+```bash
 docker-compose up -d
 ```
 
-### FOR WINDOWS fix environment. Start windows powershell and first run:
-```sh
-$Env:COMPOSE_CONVERT_WINDOWS_PATHS=1
+## Настройка ssl для домена
+для домена `domain.example.com`, переименовать сертификаты по шаблону домена: `domain.example.com.crt`, `domain.example.com.key`. После скопировать сертификаты в папку `certs`. 
+```bash
+
 ```
+
+## Настройка аутентификации на конкретный сервис
+`htpasswd` находится внутри пакета `apache2-utils`, установить:
+```bash
+sudo apt install apache2-utils
+```
+
+нужно в папку `htpasswd/` добавить файл конфига `htpasswd` с названием `url`. Чтобы сгенерировать его, нужно воспользоваться следующей командой:
+```bash
+# example.domain.com - по какому url поставить аутентификацию
+# some_user - имя пользователя
+htpasswd -c ./htpasswd/example.domain.com some_user
+```
+
 ------------------------------------------------------------
 ### other methods start proxy nginx:
 1. with ssl
-```sh
+```bash
 docker run -d --name nginx-proxy -p 80:80 -p 443:443 -v $CERTS_FOLDER:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro --net front --restart always jwilder/nginx-proxy
 ```
 2. without ssl
-```sh
+```bash
 docker run -d --name nginx-proxy -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --net front --restart always jwilder/nginx-proxy
 ```
 

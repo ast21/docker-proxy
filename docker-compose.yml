@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   nginx-proxy:
     image: jwilder/nginx-proxy
@@ -9,12 +9,13 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./certs:/etc/nginx/certs
+      - ./htpasswd:/etc/nginx/htpasswd
       - ./conf.d:/etc/nginx/conf.d
       - ./proxy.conf:/etc/nginx/proxy.conf
     restart: always
     networks:
       - front
-            
+
 networks:
   front:
     external:
