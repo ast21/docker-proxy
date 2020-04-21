@@ -11,10 +11,7 @@ docker-compose up -d
 ```
 
 ## Настройка ssl для домена
-для домена `domain.example.com`, переименовать сертификаты по шаблону домена: `domain.example.com.crt`, `domain.example.com.key`. После скопировать сертификаты в папку `certs`. 
-```bash
-
-```
+для домена `domain.example.com`, переименовать сертификаты по шаблону домена: `domain.example.com.crt`, `domain.example.com.key`. После скопировать сертификаты в папку `certs`.
 
 ## Настройка аутентификации на конкретный сервис
 `htpasswd` находится внутри пакета `apache2-utils`, установить:
