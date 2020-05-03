@@ -2,7 +2,7 @@
 
 ## create network
 ```bash
-docker network create --subnet=192.168.200.0/28 front
+docker network create --subnet=192.168.200.0/24 front
 ```
 
 ## and start it
