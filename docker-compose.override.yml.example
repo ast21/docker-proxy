@@ -9,6 +9,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       DEFAULT_EMAIL: ${DEFAULT_EMAIL}
+    depends_on:
+      - nginx-proxy
     restart: always
     networks:
       - front
