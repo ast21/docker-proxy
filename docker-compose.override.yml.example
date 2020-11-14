@@ -1,0 +1,15 @@
+version: "3"
+services:
+  nginx-proxy-letsencrypt:
+    image: nginx-proxy-letsencrypt
+    container_name: nginx-proxy-letsencrypt
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./letsencrypt/html:/usr/share/nginx/html
+      - ./letsencrypt/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/certs:/etc/nginx/certs
+    environment:
+      DEFAULT_EMAIL: ${DEFAULT_EMAIL}
+    restart: always
+    networks:
+      - front
