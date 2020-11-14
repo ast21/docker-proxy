@@ -1,3 +1,4 @@
 /.idea
 /conf.d/default.conf
 docker-compose.override.yml
+.env

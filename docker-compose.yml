@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   nginx-proxy:
     image: jwilder/nginx-proxy
@@ -8,8 +8,6 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./letsencrypt/html:/usr/share/nginx/html
-      - ./letsencrypt/vhost.d:/etc/nginx/vhost.d
       - ./nginx/certs:/etc/nginx/certs
       - ./nginx/htpasswd:/etc/nginx/htpasswd
       - ./nginx/proxy.conf:/etc/nginx/proxy.conf
