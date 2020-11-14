@@ -10,8 +10,24 @@ docker network create --subnet=192.168.200.0/24 front
 docker-compose up -d
 ```
 
-## Настройка ssl для домена
-для домена `domain.example.com`, переименовать сертификаты по шаблону домена: `domain.example.com.crt`, `domain.example.com.key`. После скопировать сертификаты в папку `certs`.
+## Настройка ssl с готовым доменом
+для домена `domain.example.com`, 
+переименовать сертификаты по шаблону домена: `domain.example.com.crt`, `domain.example.com.key`. И скопировать сертификаты в папку `nginx/certs/`.
+
+## Настройка ssl с использованием letsencrypt
+для домена `domain.example.com`, необходимо выполнить следующее:
+```bash
+cp .env.example .env
+cp docker-compose.override.yml.example docker-compose.override.yml
+docker-compose up -d
+```
+Можно поменять значение `DEFAULT_EMAIL`, будут приходить уведомления по окончанию срока сертификата. Можно забить.  
+
+Далее в запускаемом `nginx` контейнере прописать `environments`, это все что нужно сделать:
+```dotenv
+VIRTUAL_HOST=domain.example.com
+LETSENCRYPT_HOST=domain.example.com
+```
 
 ## Настройка аутентификации на конкретный сервис
 `htpasswd` находится внутри пакета `apache2-utils`, установить:
