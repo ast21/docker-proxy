@@ -8,10 +8,10 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./certs:/etc/nginx/certs
-      - ./htpasswd:/etc/nginx/htpasswd
-      - ./proxy.conf:/etc/nginx/proxy.conf
-      - ./client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/htpasswd:/etc/nginx/htpasswd
+      - ./nginx/proxy.conf:/etc/nginx/proxy.conf
+      - ./nginx/conf.d/uploads.conf:/etc/nginx/conf.d/uploads.conf
     restart: always
     networks:
       - front

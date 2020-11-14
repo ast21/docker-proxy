@@ -36,4 +36,3 @@ docker run -d --name nginx-proxy -p 80:80 -p 443:443 -v $CERTS_FOLDER:/etc/nginx
 ```bash
 docker run -d --name nginx-proxy -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --net front --restart always jwilder/nginx-proxy
 ```
-
